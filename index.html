@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="keywords" content="VistaLLM, MultimodalLLM">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAFARI</title>
+  
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon_transparent.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+<style>
+.container {
+  position: relative;
+}
+
+.text-block {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  margin-left: 5px;
+  width: 97.5%;
+  text-align: center;
+  border-radius:10px 10px 0px 0px;
+  border: 1px solid #787878;
+  background-color: #787878;
+  color: white;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar" style="margin-bottom:-40px" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div style="margin-bottom:-80px" class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">SafaRi: Adaptive Sequence Transformer for Weakly Supervised Referring Expression Segmentation</h1>
+          <h1 style="font-size:2vw"><font color="#ff0000"> <b> ECCV 2024 </b> </font></h1>
+		  <br>
+		  <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://sayannag.github.io/">Sayan Nag</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="hhttps://research.adobe.com/person/koustava-goswami/">Koustava Goswami</a><sup>2</sup>,
+            </span>
+			<span class="author-block">
+              <a href="https://karanams.github.io/">Srikrishna Karanam</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+			<span class="author-block"><sup>1</sup>University of Toronto,</span>
+			<span class="author-block"><sup>2</sup>Adobe Research</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+			  <!--
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+			  <!--
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+				 -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">TL;DR</h2>
+		<center>
+        <div class="content has-text-justified" style='width:100%'>
+          <p>
+            TBD.
+		  </p>
+        </div>
+		</center>
+      </div>
+    </div>
+	
+</div>
+</section>
+-->
+
+<section class="section">
+  <div class="container is-max-desktop" style="margin-top:-0px">
+  <center><h2 class="title is-3">Primary Contributions</h2></center><br>
+
+    <div class="columns is-centered">
+
+	  <div class="container is-max-desktop" style="margin-top:-33px">
+	  <div class="hero-body" style='margin-top:0px;margin-bottom:-25px'>
+	<center>
+      <img src="./static/images/teaser.png"
+                 class="interpolation-image" width=100%/></center>
+	  </br>
+    </div>
+	  </div>
+
+
+	  
+      </div>
+	  
+	  <div class="container is-max-desktop" style="margin-top:-43px">
+	  <div class="content">
+	  <p class="content has-text-justified" style='width:100%'>
+	  <ul>
+		<li><p class="content has-text-justified" style='width:100%;margin-top:-10px'><strong>Novel Task:</strong> To the best of our knowledge,
+ours is the first to consider an accurate representation of Weakly-Supervised Referring Expression (WS-RES) task by considering a novel, more practical and
+challenging scenario with limited box and mask annotations where <u>box % equals
+mask %</u>. </p></li>
+	  <li><p class="content has-text-justified" style='width:100%;margin-top:0px'><strong>Cross-modal Alignment:</strong> The novel X-FACt module fosters prediction of high quality masks
+by improving <i>cross-modal alignment quality</i>, especially where abundant ground-
+truth annotations are not present. . </p></li>
+	  <li><p class="content has-text-justified" style='width:100%;margin-top:0px'><strong>Self-Labeling:</strong> Utilizing SpARC, a novel zero-shot
+REC technique, the mask validity filtering stage together with the bootstrapping pipeline improve system’s <i>self-labeling capabilities</i>. </p></li>
+	  <li><p class="content has-text-justified" style='width:100%;margin-top:0px'><strong>Strong Generalization:</strong> Extensive experiments demonstrate the efficacy of SafaRi as it significantly outperforms baseline
+models on RES benchmarks. SafaRi also demonstrates strong generalization
+capabilities when evaluated on an unseen referring video object segmentation
+task in a zero-shot manner. Notably, with just 30% mask-annotated data, SafaRi achieves 59.31 and 55.83 mIoUs versus 58.93 and 55.64 mIoUs obtained by
+the fully-supervised SOTA method SeqTR on RefCOCO+@testA and RefCOCOg@test sets. </p></li>
+	  </ul>
+	  </p>
+	  </div>
+	  </div>
+    </div>
+
+  </div>
+</section>
+	
+  <section class="columns is-vcentered interpolation-panel" width=100%>
+  <div class="container is-max-desktop">
+    <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+	<center>
+      <h2 class="title is-3">SAFARI Framework</h2>
+      <img src="./static/images/Main_System_transparent_bg.png"
+                 class="interpolation-image" width=80%/></center>
+	  </br>
+      <p class="content has-text-justified">
+		Architectural components of <b>SafaRi</b>. (i) We introduce X-FACt, composed of normalized gated cross-attention based Fused Feature Extractors and Atten-
+tion Consistency Mask Regularization (AMCR) for enhancing cross-modal synergy and
+spatial localization of target objects. The fused output is subsequently fed to Sequence
+Transformer for prediction of contour points.(ii) We design Mask Validity Filtering
+(MVF) strategy for choosing valid pseudo-masks using SpARC module which is a
+Zero-Shot REC approach with spatial reasoning capabilities.
+      </p>
+    </div>
+  </div>
+  </section>
+<!--
+  <section class="section">
+  <div class="container is-max-desktop">
+    
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Abstract</h2>
+    <center>
+        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+          <p class="content has-text-justified" style='width:100%'>
+			The ability of large language models (LLMs) to process 
+			visual inputs has given rise to general-purpose vision systems,
+			unifying various vision-language (VL) tasks by instruction tuning.
+			However, due to the enormous diversity in
+			input-output formats in the vision domain, existing general
+			purpose models fail to successfully integrate segmentation
+			and multi-image inputs with coarse-level tasks into a single
+			framework.
+		  </p>
+
+		  <p class="content has-text-justified" style='width:100%'>
+			In this work, we introduce <strong>VistaLLM</strong>, a powerful 
+			visual system that addresses coarse- and fine-grained VL
+			tasks over single and multiple input images using a unified
+			framework. VistaLLM utilizes an instruction-guided image
+			tokenizer that filters global embeddings using task descriptions 
+			to extract compressed and refined features from numerous images. 
+			Moreover, VistaLLM employs a gradient aware adaptive sampling technique
+			to represent binary segmentation masks as sequences, significantly improving over 
+			previously used uniform sampling.
+		  </p>
+
+		  <p class="content has-text-justified" style='width:100%'>
+			To bolster the desired capability of VistaLLM, 
+			we curate CoinIt, a comprehensive coarse-to-fine instruction tuning dataset with 6.8M samples. 
+			We also address the lack of multi-image grounding 
+			datasets by introducing a novel task, AttCoSeg (Attribute level Co-Segmentation), 
+			which boosts the model’s reasoning and grounding capability over multiple input images.
+			Extensive experiments on a wide range of V- and VL tasks 
+			demonstrate the effectiveness of VistaLLM by achieving 
+			consistent state-of-the-art performance over strong baselines across all downstream tasks.
+		  </p>
+        </div>
+    </center>
+      </div>
+    </div>
+  
+</div>
+</section>
+-->
+  <section class="columns is-vcentered" width=100%>
+  <div class="container is-max-desktop">
+    <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+	<center>
+      <h2 class="title is-3">Main Result</h2>
+      <img src="./static/images/main_result.png"
+                 class="interpolation-image" width=70%/></center>
+	  </br>
+      <p class="content has-text-justified">
+		Comparison with the state-of-the-arts on the RES task. SafaRi substantially
+outperforms SOTA SeqTR in the fully-supervised benchmark. SafaRi
+also yields significant gains over baseline Partial-RES even without using 100% box
+annotations in the WSRES task. † means trained on extra data combining RefCOCO
+datasets. ♠ indicates our reimplementation of Partial-RES with Swin-B backbone
+where we get better mIoUs than their reported values. 
+      </p>
+    </div>
+  </div>
+  </section>
+
+  
+  
+  <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+		<br>
+        <h2 class="title is-3">Zero-shot Results with weakly-supervised model</h2>
+        <!--<div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div> -->
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+	<!-- <center><p><strong>Cross Attention Visualizations</strong></p></center><br> -->
+      <div id="results-carousel" class="carousel results-carousel">
+		<div class="container">
+			<div class="text-block">
+				<p>a sliver car going from shade to sunlight</p>
+			</div>
+			<div class="item item-steve">
+			  <img src="./static/images/a_sliver_car_going_from_shade_to_sunlight.gif"
+					 class="interpolation-image" height=100%/>
+			</div>
+		</div>
+		<div class="container">
+			<div class="text-block">
+				<p>a man in a red sweatshirt performing breakdance</p>
+			</div>
+			<div class="item item-steve">
+			  <img src="./static/images/a_man_in_a_red_sweatshirt_performing_breakdance.gif"
+					 class="interpolation-image" height=100%/>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="text-block">
+				<p>a boy is standing_up</p>
+			</div>
+			<div class="item item-chair-tp">
+          <img src="./static/images/a_boy_is_standing_up.gif"
+                 class="interpolation-image" height=100%/>
+        </div>
+		</div>
+		
+		<div class="container">
+			<div class="text-block">
+				<p>a man jumping across a wall</p>
+			</div>
+			<div class="item item-shiba">
+          <img src="./static/images/a_man_jumping_across_a_wall.gif"
+                 class="interpolation-image" height=100%/>
+        </div>
+		</div>
+		
+		<div class="container">
+			<div class="text-block">
+				<p>the woman in red walking</p>
+			</div>
+			<div class="item item-blueshirt">
+          <img src="./static/images/woman_in_red_walking.gif"
+                 class="interpolation-image" height=100%/>
+        </div>
+		</div>
+		
+		<div class="container">
+			<div class="text-block">
+				<p>a lady is bending</p>
+			</div>
+			<div class="item item-blueshirt">
+          <img src="./static/images/a_lady_is_bending.gif"
+                 class="interpolation-image" height=100%/>
+        </div>
+		</div>
+		
+		</div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Cross-attention Maps and corresponding predictions</h2>
+    <center>
+        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+		  <center>
+		  <img src="./static/images/CA_plus_Segmentation_Mask.jpg"
+					 class="interpolation-image" width=70%/></center>
+          <p class="content has-text-justified" style='width:100%'>
+			Cross-attention Maps and corresponding
+			predictions showing strong
+			cross-modal alignment learned by SafaRi.
+		  </p>		
+        </div>
+    </center>
+      </div>
+    </div>
+	
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Cross-attention Maps with and without AMCR</h2>
+    <center>
+        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+		  <center>
+		  <img src="./static/images/WSRES_CA_AMCR.jpg"
+					 class="interpolation-image" width=100%/></center>
+          <p class="content has-text-justified" style='width:100%'>
+			Qualitative differences between cross-attention maps and predicted
+			masks in the presence and absence of AMCR. Without AMCR, some regions
+			outside the object boundary are attended which affects the quality of predicted masks.
+		  </p>
+        </div>
+    </center>
+      </div>
+    </div>
+	
+	<div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Predictions with varying label-rates.</h2>
+    <center>
+        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+		  <center>
+		  <img src="./static/images/WSRES_different_label_rates.png"
+					 class="interpolation-image" width=60%/></center>
+          <p class="content has-text-justified" style='width:100%'>
+			Predictions with varying
+			label-rates. With increasing mask annotations
+			%, prediction quality improves.
+		  </p>		
+        </div>
+    </center>
+      </div>
+    </div>
+	
+	<div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Predictions with varying bootstrapping steps.</h2>
+    <center>
+        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+		  <center>
+		  <img src="./static/images/WSRES_gamma_scheduling.png"
+					 class="interpolation-image" width=100%/></center>
+          <p class="content has-text-justified" style='width:100%'>
+			Examples of masks with increasing WSRES bootstrapping runs
+			(steps) for 10% annotations. We see significant improvements in localization capabilities
+			with an increase in retraining steps illustrating the efficacy our approach.
+		  </p>		
+        </div>
+    </center>
+      </div>
+    </div>
+	
+<!-- Animation
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animation</h2>
+
+      
+        <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/>
+ 
+
+        
+        <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        
+
+      </div>
+    </div>
+     -->
+
+<!--
+<section class="section">
+  <div class="container is-max-desktop">
+  <center><h2 class="title is-3" style="padding-top:-100px">Paper</h2></center><br>
+
+        <table id="paper" class="center">
+            <tr>
+                <td>
+                    <a href="https://arxiv.org/pdf/2307.05463.pdf"><img style="box-shadow: 5px 5px 2px #888888; margin: 10px"
+                            src="static/images/paper-screenshot.png" width="100px" /></a>
+                </td>
+                <td></td>
+                <td style="padding-left:30px;padding-top:25px">
+                    <a href="https://arxiv.org/pdf/2307.05463.pdf">EgoVLPv2: Egocentric Video-Language Pre-training with Fusion in the Backbone</a><br />
+                    Shraman Pramanick, Yale Song, Sayan Nag, Kevin Qinghong Lin, Hardik Shah, Mike Zheng Shou, Rama Chellappa, Pengchuan Zhang<br />
+					[<a href="https://arxiv.org/pdf/2307.05463.pdf">arXiv</a>]
+                    [<a href="">code</a>]
+				</td>
+			</tr>
+        </table>
+
+  </div>
+</section>
+-->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content" style="margin-top:-70px">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>Coming Soon
+</code></pre>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content" style="margin-top:-70px">
+    <h2 class="title">Acknowledgement</h2>
+This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. 
+Template of this website is borrowed from <a href="https://nerfies.github.io/">nerfies</a> website.
+</code></pre>
+  </div>
+</section>
+
+
+<!-- <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Template of this website is borrowed from <a
+              href="https://nerfies.github.io/">nerfies</a> website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+</body>
+</html>
