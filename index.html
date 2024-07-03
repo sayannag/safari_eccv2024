@@ -71,7 +71,7 @@
 </head>
 <body>
 
-<nav class="navbar" style="margin-bottom:-40px" role="navigation" aria-label="main navigation">
+<!--<nav class="navbar" style="margin-bottom:-40px" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
@@ -79,11 +79,11 @@
       <span aria-hidden="true"></span>
     </a>
   </div>
-</nav>
+</nav>-->
 
 
-<section class="hero">
-  <div style="margin-bottom:-80px" class="hero-body">
+<section class="columns is-vcentered interpolation-panelnew">
+  <div style="margin-bottom:-40px" class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
@@ -181,7 +181,7 @@
 -->
 
 <section class="section">
-  <div class="container is-max-desktop" style="margin-top:-0px">
+  <div class="container is-max-desktop" style="margin-top:-40px">
   <center><h2 class="title is-3">Primary Contributions</h2></center><br>
 
     <div class="columns is-centered">
@@ -212,11 +212,9 @@ by improving <i>cross-modal alignment quality</i>, especially where abundant gro
 truth annotations are not present. . </p></li>
 	  <li><p class="content has-text-justified" style='width:100%;margin-top:0px'><strong>Self-Labeling:</strong> Utilizing SpARC, a novel zero-shot
 REC technique, the mask validity filtering stage together with the bootstrapping pipeline improve system’s <i>self-labeling capabilities</i>. </p></li>
-	  <li><p class="content has-text-justified" style='width:100%;margin-top:0px'><strong>Strong Generalization:</strong> Extensive experiments demonstrate the efficacy of SafaRi as it significantly outperforms baseline
-models on RES benchmarks. SafaRi also demonstrates strong generalization
+	  <li><p class="content has-text-justified" style='width:100%;margin-top:0px'><strong>Strong Generalization:</strong> SafaRi demonstrates strong generalization
 capabilities when evaluated on an unseen referring video object segmentation
-task in a zero-shot manner. Notably, with just 30% mask-annotated data, SafaRi achieves 59.31 and 55.83 mIoUs versus 58.93 and 55.64 mIoUs obtained by
-the fully-supervised SOTA method SeqTR on RefCOCO+@testA and RefCOCOg@test sets. </p></li>
+task in a zero-shot manner.</p></li>
 	  </ul>
 	  </p>
 	  </div>
@@ -315,13 +313,86 @@ where we get better mIoUs than their reported values.
   </div>
   </section>
 
-  
-  
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Cross-attention Maps and corresponding predictions</h2>
+    <center>
+        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+		  <center>
+		  <img src="./static/images/CA_plus_Segmentation_Mask.jpg"
+					 class="interpolation-image" width=70%/></center>
+          <p class="content has-text-justified" style='width:100%'>
+			Cross-attention Maps and corresponding
+			predictions showing strong
+			cross-modal alignment learned by SafaRi.
+		  </p>		
+        </div>
+    </center>
+      </div>
+    </div>
+	
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Cross-attention Maps with and without AMCR</h2>
+    <center>
+        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+		  <center>
+		  <img src="./static/images/WSRES_CA_AMCR.jpg"
+					 class="interpolation-image" width=100%/></center>
+          <p class="content has-text-justified" style='width:100%'>
+			Qualitative differences between cross-attention maps and predicted
+			masks in the presence and absence of AMCR. Without AMCR, some regions
+			outside the object boundary are attended which affects the quality of predicted masks.
+		  </p>
+        </div>
+    </center>
+      </div>
+    </div>
+	
+	<div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Predictions with varying label-rates.</h2>
+    <center>
+        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+		  <center>
+		  <img src="./static/images/WSRES_different_label_rates.png"
+					 class="interpolation-image" width=60%/></center>
+          <p class="content has-text-justified" style='width:100%'>
+			Predictions with varying
+			label-rates. With increasing mask annotations
+			%, prediction quality improves.
+		  </p>		
+        </div>
+    </center>
+      </div>
+    </div>
+	
+	<div class="columns is-centered has-text-centered">
+      <div class="column is-max-desktop">
+        <h2 class="title is-3">Predictions with varying bootstrapping steps.</h2>
+    <center>
+        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
+		  <center>
+		  <img src="./static/images/WSRES_gamma_scheduling.png"
+					 class="interpolation-image" width=100%/></center>
+          <p class="content has-text-justified" style='width:100%'>
+			Examples of masks with increasing WSRES bootstrapping runs
+			(steps) for 10% annotations. We see significant improvements in localization capabilities
+			with an increase in retraining steps illustrating the efficacy our approach.
+		  </p>		
+        </div>
+    </center>
+      </div>
+    </div>
+	
   <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
 		<br>
-        <h2 class="title is-3">Zero-shot Results with weakly-supervised model</h2>
+        <h2 class="title is-3">Zero-shot Results with weakly-supervised model on Video datasets</h2>
         <!--<div class="publication-video">
           <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -404,80 +475,6 @@ where we get better mIoUs than their reported values.
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-max-desktop">
-        <h2 class="title is-3">Cross-attention Maps and corresponding predictions</h2>
-    <center>
-        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
-		  <center>
-		  <img src="./static/images/CA_plus_Segmentation_Mask.jpg"
-					 class="interpolation-image" width=70%/></center>
-          <p class="content has-text-justified" style='width:100%'>
-			Cross-attention Maps and corresponding
-			predictions showing strong
-			cross-modal alignment learned by SafaRi.
-		  </p>		
-        </div>
-    </center>
-      </div>
-    </div>
-	
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-max-desktop">
-        <h2 class="title is-3">Cross-attention Maps with and without AMCR</h2>
-    <center>
-        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
-		  <center>
-		  <img src="./static/images/WSRES_CA_AMCR.jpg"
-					 class="interpolation-image" width=100%/></center>
-          <p class="content has-text-justified" style='width:100%'>
-			Qualitative differences between cross-attention maps and predicted
-			masks in the presence and absence of AMCR. Without AMCR, some regions
-			outside the object boundary are attended which affects the quality of predicted masks.
-		  </p>
-        </div>
-    </center>
-      </div>
-    </div>
-	
-	<div class="columns is-centered has-text-centered">
-      <div class="column is-max-desktop">
-        <h2 class="title is-3">Predictions with varying label-rates.</h2>
-    <center>
-        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
-		  <center>
-		  <img src="./static/images/WSRES_different_label_rates.png"
-					 class="interpolation-image" width=60%/></center>
-          <p class="content has-text-justified" style='width:100%'>
-			Predictions with varying
-			label-rates. With increasing mask annotations
-			%, prediction quality improves.
-		  </p>		
-        </div>
-    </center>
-      </div>
-    </div>
-	
-	<div class="columns is-centered has-text-centered">
-      <div class="column is-max-desktop">
-        <h2 class="title is-3">Predictions with varying bootstrapping steps.</h2>
-    <center>
-        <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
-		  <center>
-		  <img src="./static/images/WSRES_gamma_scheduling.png"
-					 class="interpolation-image" width=100%/></center>
-          <p class="content has-text-justified" style='width:100%'>
-			Examples of masks with increasing WSRES bootstrapping runs
-			(steps) for 10% annotations. We see significant improvements in localization capabilities
-			with an increase in retraining steps illustrating the efficacy our approach.
-		  </p>		
-        </div>
-    </center>
-      </div>
-    </div>
 	
 <!-- Animation
     <div class="columns is-centered">
@@ -569,7 +566,7 @@ where we get better mIoUs than their reported values.
 -->
 
 <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content" style="margin-top:-70px">
+  <div class="container is-max-desktop content" style="margin-top:0px">
     <h2 class="title">BibTeX</h2>
     <pre><code>Coming Soon
 </code></pre>
